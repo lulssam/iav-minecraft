@@ -8,11 +8,12 @@ public class World : MonoBehaviour
     public GameObject player;
     public Material material;
     public static int chunkSize = 16;
-    public static int radius = 6;
+    public static int radius = 2;
     public static ConcurrentDictionary<string, Chunk> chunkDict;
     public static List<string> toRemove = new List<string>();
     Vector3 lastBuildPos;
     bool drawing;
+
 
     public static string CreateChunkName(Vector3 v)
     {
