@@ -7,6 +7,14 @@ public class BlockInteraction : MonoBehaviour
     enum InteractionType { DESTROY, BUILD };
     InteractionType interactionType;
 
+    GameObject player;
+
+    private void Awake()
+    {
+        player = GameObject.FindWithTag("Player");
+    }
+
+
     private void Update()
     {
         bool interaction = Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1); // Detecta apenas o clique inicial
@@ -30,6 +38,11 @@ public class BlockInteraction : MonoBehaviour
                 else
                 {
                     hitBlock = hit.point + hit.normal / 2f;
+                    if (Vector3.Distance(hitBlock, player.transform.position) < 1f)
+                    {
+                        Debug.Log("Não podes construir aqui!");
+                        return;
+                    }
                 }
 
                 int blockx = (int)(Mathf.Round(hitBlock.x) - chunkx);
@@ -37,6 +50,7 @@ public class BlockInteraction : MonoBehaviour
                 int blockz = (int)(Mathf.Round(hitBlock.z) - chunkz);
 
                 Chunk c;
+                Vector3 playerPos = player.transform.position;
                 if (World.chunkDict.TryGetValue(chunkName, out c))
                 {
                     if (blockx >= 0 && blockx < World.chunkSize &&

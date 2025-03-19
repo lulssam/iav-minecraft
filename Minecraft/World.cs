@@ -5,6 +5,7 @@ using System.Collections.Concurrent;
 
 public class World : MonoBehaviour
 {
+
     public GameObject player;
     public Material material;
     public static int chunkSize = 16;
@@ -13,7 +14,6 @@ public class World : MonoBehaviour
     public static List<string> toRemove = new List<string>();
     Vector3 lastBuildPos;
     bool drawing;
-
 
     public static string CreateChunkName(Vector3 v)
     {
@@ -138,4 +138,5 @@ public class World : MonoBehaviour
         }
         if (!drawing) Drawing();
     }
+
 }

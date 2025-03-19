@@ -5,7 +5,7 @@ public class Utils : MonoBehaviour
     // smooth para alisar mais o terreno
     static float smooth = 0.003f; // quanto mais pequeno, mais suave
     static float smooth3D = 10 * smooth;
-    static int maxHeight = 80;
+    static int maxHeight = 64;
     static int octaves = 6;
     static float persistence = 0.8f;
     static float offset = 32000f;
