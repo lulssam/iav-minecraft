@@ -9,13 +9,13 @@ public class BlockInteraction : MonoBehaviour
 
     private void Update()
     {
-        bool interaction = Input.GetMouseButton(0) || Input.GetMouseButton(1);
+        bool interaction = Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1); // Detecta apenas o clique inicial
         //Debug.Log("Interação: " + interaction);
         if (interaction)
         {
-            interactionType = Input.GetMouseButton(0) ? InteractionType.DESTROY : InteractionType.BUILD;
+            interactionType = Input.GetMouseButtonDown(0) ? InteractionType.DESTROY : InteractionType.BUILD;
             RaycastHit hit;
-            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 5))
+            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 4))
             {
                 string chunkName = hit.collider.gameObject.name;
                 float chunkx = hit.collider.gameObject.transform.position.x;
@@ -33,24 +33,29 @@ public class BlockInteraction : MonoBehaviour
                 }
 
                 int blockx = (int)(Mathf.Round(hitBlock.x) - chunkx);
-                //Debug.Log("Blockx: " + blockx);
                 int blocky = (int)(Mathf.Round(hitBlock.y) - chunky);
-                //Debug.Log("Blocky: " + blocky);
                 int blockz = (int)(Mathf.Round(hitBlock.z) - chunkz);
-                //Debug.Log("Blockz: " + blockz);
 
                 Chunk c;
                 if (World.chunkDict.TryGetValue(chunkName, out c))
                 {
-                    if (interactionType == InteractionType.DESTROY)
+                    if (blockx >= 0 && blockx < World.chunkSize &&
+                        blocky >= 0 && blocky < World.chunkSize &&
+                        blockz >= 0 && blockz < World.chunkSize)
                     {
-                        c.chunkData[blockx, blocky, blockz].SetType(Block.BlockType.AIR);
+                        if (interactionType == InteractionType.DESTROY)
+                        {
+                            c.chunkData[blockx, blocky, blockz].SetType(Block.BlockType.AIR);
+                        }
+                        else
+                        {
+                            c.chunkData[blockx, blocky, blockz].SetType(Block.BlockType.STONE);
+                        }
                     }
                     else
                     {
-                        c.chunkData[blockx, blocky, blockz].SetType(Block.BlockType.STONE);
+                        Debug.LogWarning($"Block indices out of bounds: ({blockx}, {blocky}, {blockz})");
                     }
-
                 }
 
                 List<string> updates = new List<string>();
