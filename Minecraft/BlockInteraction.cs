@@ -7,10 +7,12 @@ public class BlockInteraction : MonoBehaviour
     enum InteractionType { DESTROY, BUILD };
     InteractionType interactionType;
 
+    // referencia do player
     GameObject player;
 
     private void Awake()
     {
+        // encontrar tag do player
         player = GameObject.FindWithTag("Player");
     }
 
@@ -38,7 +40,7 @@ public class BlockInteraction : MonoBehaviour
                 else
                 {
                     hitBlock = hit.point + hit.normal / 2f;
-                    if (Vector3.Distance(hitBlock, player.transform.position) < 1f)
+                    if (Vector3.Distance(hitBlock, player.transform.position) < 1f) // se posição do player for a mesma do que o hitblock
                     {
                         Debug.Log("Não podes construir aqui!");
                         return;
