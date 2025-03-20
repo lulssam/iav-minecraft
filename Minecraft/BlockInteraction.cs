@@ -10,12 +10,13 @@ public class BlockInteraction : MonoBehaviour
     // referencia do player
     GameObject player;
 
+
     private void Awake()
     {
         // encontrar tag do player
         player = GameObject.FindWithTag("Player");
-    }
 
+    }
 
     private void Update()
     {
@@ -65,7 +66,7 @@ public class BlockInteraction : MonoBehaviour
                         }
                         else
                         {
-                            c.chunkData[blockx, blocky, blockz].SetType(Block.BlockType.STONE);
+                            c.chunkData[blockx, blocky, blockz].SetType(Block.BlockType.DIRT);
                         }
                     }
                     else

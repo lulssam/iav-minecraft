@@ -34,6 +34,7 @@ public class Chunk
 
                     int h = Utils.GenerateHeight(worldX, worldZ); // função que vai gerar numeros entre 0 e 40
                     int hs = Utils.GenerateStoneHeight(worldX, worldZ);
+                    int hc = Utils.GenerateCoalHeight(worldX, worldZ);
 
                     //Debug.Log(Utils.fBM3D(worldX, worldY, worldZ, 1, 0.5f));
 

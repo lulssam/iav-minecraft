@@ -3,7 +3,7 @@ using UnityEngine;
 public class Block
 {
     enum Cubside { BOTTOM, TOP, LEFT, RIGHT, FRONT, BACK };
-    public enum BlockType { GRASS, DIRT, STONE, AIR, COBBLESTONE, BEDROCK };
+    public enum BlockType { GRASS, DIRT, STONE, COBBLESTONE, BEDROCK, COAL, GOLD, AIR };
 
     Material material;
     BlockType blockType;
@@ -18,21 +18,19 @@ public class Block
     static Vector2 Dirt_LBC = new Vector2(2f, 15f) / 16;
     static Vector2 Stone_LBC = new Vector2(1f, 15f) / 16;
     static Vector2 Cobblestone_LBC = new Vector2(0f, 14f) / 16;
-    static Vector2 BedRock_LBC = new Vector2(1f, 14f) / 16;
+    static Vector2 BedRock_LBC = new Vector2(1f, 13f) / 16;
+    static Vector2 Coal_LBC = new Vector2(2f, 13f) / 16;
+    static Vector2 Gold_LBC = new Vector2(0, 13f) / 16;
 
-    Vector2[,] blockUvs = {
-        {GrassTop_LBC, GrassTop_LBC + new Vector2(1f,0f)/16,
-            GrassTop_LBC + new Vector2(0f, 1f) / 16, GrassTop_LBC + new Vector2(1f, 1f) / 16},
-        {GrassSide_LBC, GrassSide_LBC + new Vector2(1f,0f)/16,
-            GrassSide_LBC + new Vector2(0f, 1f) / 16, GrassSide_LBC + new Vector2(1f, 1f) / 16},
-        {Dirt_LBC, Dirt_LBC + new Vector2(1f,0f)/16,
-            Dirt_LBC + new Vector2(0f, 1f) / 16, Dirt_LBC + new Vector2(1f, 1f) / 16},
-        {Stone_LBC, Stone_LBC + new Vector2(1f,0f)/16,
-            Stone_LBC + new Vector2(0f, 1f) / 16, Stone_LBC + new Vector2(1f, 1f) / 16},
-        {Cobblestone_LBC, Cobblestone_LBC + new Vector2(1f,0f)/16,
-            Cobblestone_LBC + new Vector2(0f, 1f) / 16, Cobblestone_LBC + new Vector2(1f, 1f) / 16},
-        {BedRock_LBC, BedRock_LBC + new Vector2(1f,0f)/16,
-            BedRock_LBC + new Vector2(0f, 1f) / 16, BedRock_LBC + new Vector2(1f, 1f) / 16}
+    public Vector2[,] blockUvs = {
+        {GrassTop_LBC, GrassTop_LBC  + new Vector2(1f,0f)/16, GrassTop_LBC + new Vector2(0f, 1f) / 16, GrassTop_LBC + new Vector2(1f, 1f) / 16},
+        {GrassSide_LBC, GrassSide_LBC + new Vector2(1f,0f)/16, GrassSide_LBC + new Vector2(0f, 1f) / 16, GrassSide_LBC + new Vector2(1f, 1f) / 16},
+        {Dirt_LBC, Dirt_LBC + new Vector2(1f,0f)/16, Dirt_LBC + new Vector2(0f, 1f) / 16, Dirt_LBC + new Vector2(1f, 1f) / 16},
+        {Stone_LBC, Stone_LBC + new Vector2(1f,0f)/16, Stone_LBC + new Vector2(0f, 1f) / 16, Stone_LBC + new Vector2(1f, 1f) / 16},
+        {Cobblestone_LBC, Cobblestone_LBC + new Vector2(1f,0f)/16, Cobblestone_LBC + new Vector2(0f, 1f) / 16, Cobblestone_LBC + new Vector2(1f, 1f) / 16},
+        {BedRock_LBC, BedRock_LBC + new Vector2(1f,0f)/16, BedRock_LBC + new Vector2(0f, 1f) / 16, BedRock_LBC + new Vector2(1f, 1f) / 16},
+        {Coal_LBC, Coal_LBC + new Vector2(1f,0f)/16, Coal_LBC + new Vector2(0f, 1f) / 16, Coal_LBC + new Vector2(1f,1f)},
+        {Gold_LBC, Gold_LBC + new Vector2(1f, 0f) / 16, Gold_LBC + new Vector2(0f, 1f) / 16, Gold_LBC + new Vector2(1f, 1f) / 16}
     };
 
     public Block(BlockType blockType, Vector3 pos, Chunk owner, Material material)
@@ -41,6 +39,7 @@ public class Block
         this.pos = pos;
         this.material = material;
         SetType(blockType);
+
     }
     public void SetType(BlockType blockType)
     {
@@ -86,6 +85,7 @@ public class Block
         }
         else
         {
+
             uv00 = blockUvs[(int)(blockType + 1), 0];
             uv10 = blockUvs[(int)(blockType + 1), 1];
             uv01 = blockUvs[(int)(blockType + 1), 2];
