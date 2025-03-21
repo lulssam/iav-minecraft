@@ -32,6 +32,12 @@ public class Chunk
                     int worldY = (int)goChunk.transform.position.y + y;
                     int worldZ = (int)goChunk.transform.position.z + z;
 
+                    if (worldY == 0)
+                    {
+                        chunkData[x, y, z] = new Block(Block.BlockType.BEDROCK, pos, this, material);
+                        continue;
+                    }
+
                     int h = Utils.GenerateHeight(worldX, worldZ); // função que vai gerar numeros entre 0 e 40
                     int hs = Utils.GenerateStoneHeight(worldX, worldZ);
                     int hc = Utils.GenerateCoalHeight(worldX, worldZ);
