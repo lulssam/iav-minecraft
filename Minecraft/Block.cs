@@ -29,7 +29,7 @@ public class Block
         {Stone_LBC, Stone_LBC + new Vector2(1f,0f)/16, Stone_LBC + new Vector2(0f, 1f) / 16, Stone_LBC + new Vector2(1f, 1f) / 16},
         {Cobblestone_LBC, Cobblestone_LBC + new Vector2(1f,0f)/16, Cobblestone_LBC + new Vector2(0f, 1f) / 16, Cobblestone_LBC + new Vector2(1f, 1f) / 16},
         {BedRock_LBC, BedRock_LBC + new Vector2(1f,0f)/16, BedRock_LBC + new Vector2(0f, 1f) / 16, BedRock_LBC + new Vector2(1f, 1f) / 16},
-        {Coal_LBC, Coal_LBC + new Vector2(1f,0f)/16, Coal_LBC + new Vector2(0f, 1f) / 16, Coal_LBC + new Vector2(1f,1f)},
+        {Coal_LBC, Coal_LBC + new Vector2(1f, 0f) / 16, Coal_LBC + new Vector2(0f, 1f) / 16, Coal_LBC + new Vector2(1f,1f) / 16},
         {Gold_LBC, Gold_LBC + new Vector2(1f, 0f) / 16, Gold_LBC + new Vector2(0f, 1f) / 16, Gold_LBC + new Vector2(1f, 1f) / 16}
     };
 

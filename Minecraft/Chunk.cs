@@ -41,21 +41,42 @@ public class Chunk
                     if (worldY <= hs)
                     {
                         if (Utils.fBM3D(worldX, worldY, worldZ, 1, 0.5f) < 0.498f)
-                            chunkData[x, y, z] = new Block(Block.BlockType.STONE, pos, this, material);
+                        {
+                            if (worldY <= hc)
+                            {
+                                if (Random.value < 0.03f)
+                                    chunkData[x, y, z] = new Block(Block.BlockType.COAL, pos, this, material);
+                                else
+                                    chunkData[x, y, z] = new Block(Block.BlockType.STONE, pos, this, material);
+                            }
+                            else
+                            {
+                                chunkData[x, y, z] = new Block(Block.BlockType.STONE, pos, this, material);
+                            }
+                        }
                         else
+                        {
                             chunkData[x, y, z] = new Block(Block.BlockType.AIR, pos, this, material);
+                        }
                     }
                     else if (worldY == h)
+                    {
                         chunkData[x, y, z] = new Block(Block.BlockType.GRASS, pos, this, material);
+                    }
                     else if (worldY < h)
+                    {
                         chunkData[x, y, z] = new Block(Block.BlockType.DIRT, pos, this, material);
+                    }
                     else
+                    {
                         chunkData[x, y, z] = new Block(Block.BlockType.AIR, pos, this, material);
+                    }
                 }
             }
         }
         status = ChunkStatus.DRAW;
     }
+
 
     public void DrawChunk()
     {
