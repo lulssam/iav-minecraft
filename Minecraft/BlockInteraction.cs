@@ -53,7 +53,6 @@ public class BlockInteraction : MonoBehaviour
                 int blockz = (int)(Mathf.Round(hitBlock.z) - chunkz);
 
                 Chunk c;
-                Vector3 playerPos = player.transform.position;
                 if (World.chunkDict.TryGetValue(chunkName, out c))
                 {
                     if (blockx >= 0 && blockx < World.chunkSize &&
@@ -66,7 +65,8 @@ public class BlockInteraction : MonoBehaviour
                         }
                         else
                         {
-                            c.chunkData[blockx, blocky, blockz].SetType(Block.BlockType.DIRT);
+                            // TODO meter bloco selecionado 
+                            c.chunkData[blockx, blocky, blockz].SetType(Block.BlockType.GOLD);
                         }
                     }
                     else
