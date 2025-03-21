@@ -35,7 +35,11 @@ public class Chunk
                     if (worldY == 0)
                     {
                         chunkData[x, y, z] = new Block(Block.BlockType.BEDROCK, pos, this, material);
-                        continue;
+                        if (worldY < 0)
+                        {
+                            chunkData[x, y, z] = new Block(Block.BlockType.AIR, pos, this, material);
+                            continue;
+                        }
                     }
 
                     int h = Utils.GenerateHeight(worldX, worldZ); // função que vai gerar numeros entre 0 e 40

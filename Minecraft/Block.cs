@@ -18,7 +18,7 @@ public class Block
     static Vector2 Dirt_LBC = new Vector2(2f, 15f) / 16;
     static Vector2 Stone_LBC = new Vector2(1f, 15f) / 16;
     static Vector2 Cobblestone_LBC = new Vector2(0f, 14f) / 16;
-    static Vector2 BedRock_LBC = new Vector2(1f, 13f) / 16;
+    static Vector2 BedRock_LBC = new Vector2(1f, 14f) / 16;
     static Vector2 Coal_LBC = new Vector2(2f, 13f) / 16;
     static Vector2 Gold_LBC = new Vector2(0, 13f) / 16;
 

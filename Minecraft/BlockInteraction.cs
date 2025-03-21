@@ -66,7 +66,7 @@ public class BlockInteraction : MonoBehaviour
                         else
                         {
                             // TODO meter bloco selecionado 
-                            c.chunkData[blockx, blocky, blockz].SetType(Block.BlockType.GOLD);
+                            c.chunkData[blockx, blocky, blockz].SetType(Block.BlockType.GOLD); // SetType(método que retorna bloco selecionado)
                         }
                     }
                     else
